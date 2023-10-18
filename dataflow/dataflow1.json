@@ -1,0 +1,125 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_Blob_Excel",
+						"type": "DatasetReference"
+					},
+					"name": "excel"
+				},
+				{
+					"dataset": {
+						"referenceName": "DS_SQL",
+						"type": "DatasetReference"
+					},
+					"name": "sqlserver"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DS_SQL",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "lookup1"
+				},
+				{
+					"name": "select1"
+				},
+				{
+					"name": "AlterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          EmployeeID as string,",
+				"          FirstName as string,",
+				"          LastName as string,",
+				"          Salary as string,",
+				"          HikePercentage as string,",
+				"          Designation as string,",
+				"          ManagerName as string,",
+				"          ManagerDesignation as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> excel",
+				"source(output(",
+				"          EmployeeID as integer,",
+				"          FirstName as string,",
+				"          LastName as string,",
+				"          Salary as decimal(10,2),",
+				"          HikePercentage as decimal(5,2),",
+				"          Designation as string,",
+				"          ManagerName as string,",
+				"          ManagerDesignation as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> sqlserver",
+				"excel derive(EmployeeID = toInteger(EmployeeID),",
+				"          Salary = toDecimal(Salary),",
+				"          HikePercentage = toDecimal(HikePercentage)) ~> derivedColumn1",
+				"derivedColumn1, sqlserver lookup(derivedColumn1@EmployeeID == sqlserver@EmployeeID,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookup1",
+				"lookup1 select(mapColumn(",
+				"          EmployeeID = derivedColumn1@EmployeeID,",
+				"          FirstName = excel@FirstName,",
+				"          LastName = excel@LastName,",
+				"          Salary = derivedColumn1@Salary,",
+				"          HikePercentage = derivedColumn1@HikePercentage,",
+				"          Designation = excel@Designation,",
+				"          ManagerName = excel@ManagerName,",
+				"          ManagerDesignation = excel@ManagerDesignation,",
+				"          EmployeeID = sqlserver@EmployeeID,",
+				"          FirstName = sqlserver@FirstName,",
+				"          LastName = sqlserver@LastName,",
+				"          Salary = sqlserver@Salary,",
+				"          HikePercentage = sqlserver@HikePercentage,",
+				"          Designation = sqlserver@Designation,",
+				"          ManagerName = sqlserver@ManagerName,",
+				"          ManagerDesignation = sqlserver@ManagerDesignation",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 alterRow(upsertIf(1==1)) ~> AlterRow1",
+				"AlterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          EmployeeID as integer,",
+				"          FirstName as string,",
+				"          LastName as string,",
+				"          Salary as decimal(10,2),",
+				"          HikePercentage as decimal(5,2),",
+				"          Designation as string,",
+				"          ManagerName as string,",
+				"          ManagerDesignation as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:false,",
+				"     updateable:false,",
+				"     upsertable:true,",
+				"     keys:['EmployeeID'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+			]
+		}
+	}
+}
