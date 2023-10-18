@@ -1,0 +1,54 @@
+{
+	"name": "DS_Blob_Excel",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Source_Blob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "sheet1",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Results.xlsx",
+				"container": "datacontainer"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "EmployeeID",
+				"type": "String"
+			},
+			{
+				"name": "FirstName",
+				"type": "String"
+			},
+			{
+				"name": "LastName",
+				"type": "String"
+			},
+			{
+				"name": "Salary",
+				"type": "String"
+			},
+			{
+				"name": "HikePercentage",
+				"type": "String"
+			},
+			{
+				"name": "Designation",
+				"type": "String"
+			},
+			{
+				"name": "ManagerName",
+				"type": "String"
+			},
+			{
+				"name": "ManagerDesignation",
+				"type": "String"
+			}
+		]
+	}
+}
