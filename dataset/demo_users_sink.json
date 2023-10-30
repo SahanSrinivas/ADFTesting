@@ -1,0 +1,12 @@
+{
+	"name": "demo_users_sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Sink_SQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
