@@ -1,0 +1,12 @@
+{
+	"name": "Test_Employee_Sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Azure_Sample",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
