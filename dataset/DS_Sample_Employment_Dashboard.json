@@ -1,0 +1,36 @@
+{
+	"name": "DS_Sample_Employment_Dashboard",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Sample_SQL_Source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Login_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Employment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Employment_Other",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "LinkEmployment"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

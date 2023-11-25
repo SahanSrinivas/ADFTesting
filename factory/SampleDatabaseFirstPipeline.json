@@ -1,0 +1,9 @@
+{
+	"name": "SampleDatabaseFirstPipeline",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ef778d32-91ff-4e66-adc9-5cd6a7819cdd",
+		"tenantId": "d3f5a129-1427-40e3-8628-385bf05338cd"
+	}
+}

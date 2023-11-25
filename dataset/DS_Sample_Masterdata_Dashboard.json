@@ -1,0 +1,120 @@
+{
+	"name": "DS_Sample_Masterdata_Dashboard",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Sample_SQL_Source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Source",
+				"type": "varchar"
+			},
+			{
+				"name": "Login_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Flag",
+				"type": "varchar"
+			},
+			{
+				"name": "Contact_Start_Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "State",
+				"type": "varchar"
+			},
+			{
+				"name": "County",
+				"type": "varchar"
+			},
+			{
+				"name": "Date_of_Birth",
+				"type": "date"
+			},
+			{
+				"name": "Gender",
+				"type": "varchar"
+			},
+			{
+				"name": "Hispanic",
+				"type": "varchar"
+			},
+			{
+				"name": "Marital_Status",
+				"type": "varchar"
+			},
+			{
+				"name": "Household_Population",
+				"type": "varchar"
+			},
+			{
+				"name": "Have_Children",
+				"type": "varchar"
+			},
+			{
+				"name": "Number_of_Childeren",
+				"type": "varchar"
+			},
+			{
+				"name": "Education",
+				"type": "varchar"
+			},
+			{
+				"name": "Income",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Speaks_English",
+				"type": "varchar"
+			},
+			{
+				"name": "HI_Decision_Maker",
+				"type": "varchar"
+			},
+			{
+				"name": "PCP",
+				"type": "varchar"
+			},
+			{
+				"name": "Financial_Decision_Maker",
+				"type": "varchar"
+			},
+			{
+				"name": "DMA",
+				"type": "varchar"
+			},
+			{
+				"name": "GC_Profile",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GC_Contact",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ReferralID",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Age_Group",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Test_Dashboard_MasterData"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

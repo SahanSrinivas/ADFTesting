@@ -1,0 +1,33 @@
+{
+	"name": "DS_Sink_Employment_Dashboard",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Sample_SQL_Source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Login_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Contact_Start_Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Employment",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Test_Dashboard_Employment"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

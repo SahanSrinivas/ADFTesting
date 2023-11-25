@@ -1,0 +1,36 @@
+{
+	"name": "DS_Link_Ethnicity",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Sample_SQL_Source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Login_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Ethnicity",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Ethnicity_Other",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "LinkEthnicity"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,292 @@
+{
+	"name": "Respondents_DataFlow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_Sample_SQL_Source",
+						"type": "DatasetReference"
+					},
+					"name": "respondentssource"
+				},
+				{
+					"dataset": {
+						"referenceName": "DS_Sample_Employment_Dashboard",
+						"type": "DatasetReference"
+					},
+					"name": "employments"
+				},
+				{
+					"dataset": {
+						"referenceName": "DS_Link_Ethnicity",
+						"type": "DatasetReference"
+					},
+					"name": "linkethnicity"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DS_Sample_SQL_Sink",
+						"type": "DatasetReference"
+					},
+					"name": "masterdatarespondents"
+				},
+				{
+					"dataset": {
+						"referenceName": "DS_Sink_EthnicityDashboard",
+						"type": "DatasetReference"
+					},
+					"name": "masterlinkethnicitysink"
+				},
+				{
+					"dataset": {
+						"referenceName": "DS_Sink_Employment_Dashboard",
+						"type": "DatasetReference"
+					},
+					"name": "materlinkemployment"
+				}
+			],
+			"transformations": [
+				{
+					"name": "respondentsfilter"
+				},
+				{
+					"name": "respondentstransformation"
+				},
+				{
+					"name": "respondentsselection"
+				},
+				{
+					"name": "AlterRow1"
+				},
+				{
+					"name": "respondentsemployment"
+				},
+				{
+					"name": "masteremploymentselect"
+				},
+				{
+					"name": "masterlinkethnicity"
+				},
+				{
+					"name": "masterlinkethnicityselect"
+				},
+				{
+					"name": "AlterRow2"
+				},
+				{
+					"name": "AlterRow3"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Respondent_ID as string,",
+				"          Source as string,",
+				"          Login_ID as integer,",
+				"          Flag as string,",
+				"          Contact_Start_Date as timestamp,",
+				"          Profile_End_Date as timestamp,",
+				"          Initial_Rewards as integer,",
+				"          One_Day_Rewards as integer,",
+				"          First_Name as string,",
+				"          Last_Name as string,",
+				"          Email_Address as string,",
+				"          Home_Phone_Number as string,",
+				"          Cell_Phone_Number as string,",
+				"          State as string,",
+				"          County as string,",
+				"          Date_of_Birth as date,",
+				"          Gender as string,",
+				"          Gender_Other as string,",
+				"          Hispanic as string,",
+				"          Marital_Status as string,",
+				"          Marital_Status_Other as string,",
+				"          Household_Population as string,",
+				"          Have_Children as string,",
+				"          Number_of_Children as string,",
+				"          Education as string,",
+				"          Education_Other as string,",
+				"          Income as string,",
+				"          Speaks_English as string,",
+				"          HI_Decision_Maker as string,",
+				"          PCP as string,",
+				"          Financial_Decision_Maker as string,",
+				"          MnT_User as string,",
+				"          Poor_Response as string,",
+				"          DMA as string,",
+				"          Referee_First_Name as string,",
+				"          Referee_Last_Name as string,",
+				"          Referee_Email as string,",
+				"          GC_Profile as integer,",
+				"          GC_Contact as integer,",
+				"          Q_RelevantIDDuplicate as string,",
+				"          Q_RelevantIDDuplicateScore as integer,",
+				"          Q_RelevantIDFraudScore as integer,",
+				"          ReferredByID_Contact as integer,",
+				"          ReferralID_Profile as integer,",
+				"          Referral_Rewards as integer,",
+				"          US_Resident as string,",
+				"          {18_or_Older} as string,",
+				"          AAA_Membership as string,",
+				"          Zip_Code as integer,",
+				"          ReferralID as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> respondentssource",
+				"source(output(",
+				"          ID as integer,",
+				"          Login_ID as integer,",
+				"          Employment as string,",
+				"          Employment_Other as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> employments",
+				"source(output(",
+				"          ID as integer,",
+				"          Login_ID as integer,",
+				"          Ethnicity as string,",
+				"          Ethnicity_Other as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> linkethnicity",
+				"respondentssource filter(GC_Contact == 1 && Flag == 'Ok') ~> respondentsfilter",
+				"respondentsselection derive(Income = replace(Income, '\\u2013', '-'),",
+				"          DMA = iif(isNull(DMA), 'National', DMA),",
+				"          Education = rtrim(iif(Education == '2-year degree / Associate’s degree','2-year degree/Associate’s degree',iif(Education == 'High school / GED','High school/GED',Education))),",
+				"          Age_Group = iif(isNull(Date_of_Birth),'Invalid D.O.B.',iif(year(currentDate()) - year(Date_of_Birth) < 18, '0 - 17 Years',iif(year(currentDate()) - year(Date_of_Birth) < 25, '18 - 24 Years',iif(year(currentDate()) - year(Date_of_Birth) < 35, '25 - 34 Years',iif(year(currentDate()) - year(Date_of_Birth) < 45, '35 - 44 Years',iif(year(currentDate()) - year(Date_of_Birth) < 55, '45 - 54 Years',iif(year(currentDate()) - year(Date_of_Birth) < 65, '55 - 64 Years','65+ Years')))))))) ~> respondentstransformation",
+				"respondentsfilter select(mapColumn(",
+				"          Source,",
+				"          Flag,",
+				"          State,",
+				"          Gender,",
+				"          Hispanic,",
+				"          Marital_Status,",
+				"          Household_Population,",
+				"          Have_Children,",
+				"          Number_of_Children,",
+				"          Education,",
+				"          Income,",
+				"          HI_Decision_Maker,",
+				"          PCP,",
+				"          Financial_Decision_Maker,",
+				"          Poor_Response,",
+				"          DMA,",
+				"          County,",
+				"          Date_of_Birth,",
+				"          Login_ID,",
+				"          GC_Profile,",
+				"          GC_Contact,",
+				"          ReferralID,",
+				"          Contact_Start_Date",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> respondentsselection",
+				"respondentstransformation alterRow(upsertIf(1==1)) ~> AlterRow1",
+				"AlterRow1, employments join(respondentsselection@Login_ID == employments@Login_ID,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> respondentsemployment",
+				"respondentsemployment select(mapColumn(",
+				"          Contact_Start_Date,",
+				"          Employment,",
+				"          Login_ID = employments@Login_ID",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> masteremploymentselect",
+				"AlterRow1, linkethnicity join(respondentsselection@Login_ID == linkethnicity@Login_ID,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> masterlinkethnicity",
+				"masterlinkethnicity select(mapColumn(",
+				"          Contact_Start_Date,",
+				"          Ethnicity,",
+				"          Login_ID = linkethnicity@Login_ID",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> masterlinkethnicityselect",
+				"masterlinkethnicityselect alterRow(upsertIf(1==1)) ~> AlterRow2",
+				"masteremploymentselect alterRow(upsertIf(1==1)) ~> AlterRow3",
+				"AlterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Source as string,",
+				"          Login_ID as integer,",
+				"          Flag as string,",
+				"          Contact_Start_Date as timestamp,",
+				"          State as string,",
+				"          County as string,",
+				"          Date_of_Birth as date,",
+				"          Gender as string,",
+				"          Hispanic as string,",
+				"          Marital_Status as string,",
+				"          Household_Population as string,",
+				"          Have_Children as string,",
+				"          Number_of_Childeren as string,",
+				"          Education as string,",
+				"          Income as string,",
+				"          Speaks_English as string,",
+				"          HI_Decision_Maker as string,",
+				"          PCP as string,",
+				"          Financial_Decision_Maker as string,",
+				"          DMA as string,",
+				"          GC_Profile as integer,",
+				"          GC_Contact as integer,",
+				"          ReferralID as double,",
+				"          Age_Group as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:true,",
+				"     keys:['Login_ID'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> masterdatarespondents",
+				"AlterRow2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Login_ID as integer,",
+				"          Contact_Start_Date as timestamp,",
+				"          Ethnicity as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:true,",
+				"     keys:['Login_ID'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> masterlinkethnicitysink",
+				"AlterRow3 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Login_ID as integer,",
+				"          Contact_Start_Date as timestamp,",
+				"          Employment as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:true,",
+				"     keys:['Login_ID'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> materlinkemployment"
+			]
+		}
+	}
+}

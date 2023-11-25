@@ -1,0 +1,234 @@
+{
+	"name": "DS_Sample_SQL_Source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Sample_SQL_Source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Respondent_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Source",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Login_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Flag",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Contact_Start_Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Profile_End_Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Initial_Rewards",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "One_Day_Rewards",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "First_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Last_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Email_Address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Home_Phone_Number",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Cell_Phone_Number",
+				"type": "nvarchar"
+			},
+			{
+				"name": "State",
+				"type": "nvarchar"
+			},
+			{
+				"name": "County",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Date_of_Birth",
+				"type": "date"
+			},
+			{
+				"name": "Gender",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Gender_Other",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Hispanic",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Marital_Status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Marital_Status_Other",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Household_Population",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Have_Children",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Number_of_Children",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Education",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Education_Other",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Income",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Speaks_English",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Decision_Maker",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PCP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Financial_Decision_Maker",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MnT_User",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Poor_Response",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DMA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Referee_First_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Referee_Last_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Referee_Email",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GC_Profile",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GC_Contact",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Q_RelevantIDDuplicate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Q_RelevantIDDuplicateScore",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Q_RelevantIDFraudScore",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ReferredByID_Contact",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ReferralID_Profile",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Referral_Rewards",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "US_Resident",
+				"type": "nvarchar"
+			},
+			{
+				"name": "18_or_Older",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AAA_Membership",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Zip_Code",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ReferralID",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Respondents"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

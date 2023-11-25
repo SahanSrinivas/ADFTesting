@@ -1,0 +1,943 @@
+{
+	"name": "Profile_Survey_Raw_copy",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Sample_SQL_Source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Login_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Flag",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ReferralID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Start_Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "End_Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Response_Type",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IP_Address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Progress",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Duration_in_seconds",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Finished",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Recorded_Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Response_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Recipient_Last_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Recipient_First_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Recipient_Email",
+				"type": "nvarchar"
+			},
+			{
+				"name": "External_Data_Reference",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Location_Latitude",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Location_Longitude",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Distribution_Channel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "User_Language",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Marital_Status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Marital_Status_Other",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Household_Population",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Have_Children",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Number_of_Children_Under_18",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Age_of_Children_Under_18",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Age_of_Children_18_to_26",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Age_of_Children_Over_27",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Age_of_Children_Prefer_not_to_answer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Education",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Education_Other",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Employment_status_I_work_full_time",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Employment_status_I_work_part_time",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Employment_status_I_am_a_full_time_homemaker",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Employment_Status_I_am_a_full_time_student",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Employment_Status_I_am_a_part_time_student",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Employment_Status_I_am_retired",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Employment_Status_I_am_not_employed_and_not_seeking_employment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Employment_Status_I_am_not_employed_and_actively_seeking_employment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Employment_Status_I_am_self_employed",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Employment_Status_Other",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Employment_Status_Prefer_not_to_answer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Employment_Status_Other_Text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Job_Title_CEO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Job_Title_Owner",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Job_Title_President",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Job_Title_Founder",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Job_Title_Administrator",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Job_Title_Director",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Job_Title_Manager",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Job_Title_Staff",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Job_Title_Other",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Job_Title_Prefer_not_to_answer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Job_Title_Other_Text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Agriculture_Forestry_Fishing_and_Hunting",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Arts_Entertainment_and_Recreation",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Beauty_Wellness",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Communications_Media_Marketing_Advertising",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Construction",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Education",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Finance_and_Insurance",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Fitness",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Food_service",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Healthcare",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Manufacturing",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Professional_and_Business_Services",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Public_Administration",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Real_Estate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Retail",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Technology",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Transportation_and_Warehousing",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Utilities",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Other",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Not_applicable",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Prefer_not_to_answer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Industries_Other_Text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Household_Income",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FA_Medicare",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FA_Medicaid",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FA_Public_assistance_PA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FA_Social_Security_Disability_SSD",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FA_Supplemental_Security_Income_SSI",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FA_Unemployment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FA_Other",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FA_I_don_t_receive_any_additional_federal_assistance",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FA_Prefer_not_to_answer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FA_Other_Text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Speaks_English",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Language_Arabic",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Language_Chinese_Cantonese_Mandarin_and_other_varieties",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Language_French_or_French_Creole_including_Cajun",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Language_German",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Language_Korean",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Language_Russian",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Language_Spanish",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Language_Tagalog",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Language_Vietnamese",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Language_Other",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Language_Other_Text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Primary_Decision_Maker",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Health_Insurance_I_am_covered_by_employer_sponsored_health_insurance",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Health_Insurance_I_am_covered_by_individual_medical_insurance",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Health_Insurance_I_am_covered_by_Medicaid",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Health_Insurance_I_am_covered_by_Medicare",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Health_Insurance_I_am_covered_by_another_type_of_health_insurance",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Health_Insurance_I_am_not_covered_by_health_insurance",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Health_Insurance_Prefer_not_to_answer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Health_Insurance_Other_Text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Primary_Care_Physician_PCP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Color",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AAA_Membership",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Financial_Decision_Role",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MandT_User",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Attending_live_shows_theatre_concerts_etc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Boating",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Camping",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Collecting_stamps_rocks_etc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Cycling_Mountain_biking",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Dancing",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Dining_out",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Entertaining",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Gardening",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Listening_to_music",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Playing_music",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Playing_sports",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Shopping",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Skiing_Snowboarding",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Swimming",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Visiting_art_galleries_and_museums",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Volunteering",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Watching_sports",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Watching_TV_movies",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Art_Crafts",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Cooking_Baking",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_DIY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Exercising",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Photography",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Playing_table_games",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Reading",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Traveling",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Video_gaming",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Other",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_None_of_the_above",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Activities_Other_Text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Pets_Cats",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Pets_Birds",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Pets_Dogs",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Pets_Reptiles",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Pets_Other",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Pets_None_of_the_above",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Pets_Other_Text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Experience_General_use_of_power_tools",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Experience_General_use_of_handheld_tools",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Experience_Tile_installation",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Experience_Welding",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Experience_Woodworking_or_carpentry",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Experience_None_of_the_above",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Type_of_Experience_General_use_of_power_tools",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Type_of_Experience_General_use_of_handheld_tools",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Type_of_Experience_Tile_installation",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Type_of_Experience_Welding",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Type_of_Experience_Woodworking_or_carpentry",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Type_of_Experience_None_of_the_above",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Referral_Source_I_saw_it_on_social_media",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Referral_Source_I_saw_it_on_a_web_browser_or_search",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Referral_Source_I_saw_it_on_the_Crowley_Webb_website",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Referral_Source_I_heard_about_it_from_recently_participating_in_a_project_with_Crowley_Webb",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Referral_Source_I_heard_about_it_from_a_friend_or_family_member",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Referral_Source_Other",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Referral_Source_Other_Text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_WNY_Aetna",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_WNY_BlueCross_BlueShield_of_Western_New_York",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_WNY_Cigna",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_WNY_Fidelis_Care",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_WNY_Humana",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_WNY_Independent_Health",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_WNY_MVP_Health_Care",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_WNY_UnitedHealthcare",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_WNY_Univera_Healthcare",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_WNY_Wellcare",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_WNY_Other",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_WNY_Prefer_not_to_answer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_WNY_Other_Text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Albany_Aetna",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Albany_CDPHP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Albany_Cigna",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Albany_Empire_BlueCross_BlueShield_Anthem",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Albany_Excellus_BlueCross_BlueShield",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Albany_Fidelis_Care",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Albany_Humana",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Albany_MVP_Health_Care",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Albany_UnitedHealthcare",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Albany_Wellcare",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Albany_Other",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Albany_Prefer_not_to_answer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Albany_Other_Text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Baltimore_Aetna",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Baltimore_CareFirst_BlueCross_BlueShield",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Baltimore_Cigna",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Baltimore_Humana",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Baltimore_Kaiser_Mid_Atlantic",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Baltimore_Kaiser_Permanente",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Baltimore_UnitedHealthCare",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Baltimore_WellCare",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Baltimore_Other",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Baltimore_Prefer_not_to_answer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_Baltimore_Other_Text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_National_BlueCross_BlueShield",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_National_Centene",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_National_Cigna",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_National_CVS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_National_HCSC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_National_Humana",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_National_Independent_Health",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_National_Kaiser_Foundation",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_National_Molina_Healthcare",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_National_UnitedHealth",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_National_Text",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HI_Company_National_Prefer_not_to_answer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Market",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Referee_First_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Referee_Last_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Referee_Email",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Reward",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GC",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Poor_Response",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Test_Profile_Survey_Raw"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
