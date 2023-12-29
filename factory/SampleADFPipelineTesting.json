@@ -1,0 +1,9 @@
+{
+	"name": "SampleADFPipelineTesting",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "54883a0c-273d-4ba5-9515-28b370666654",
+		"tenantId": "9b45e45b-4789-4fc3-9389-acb1da19660e"
+	}
+}
